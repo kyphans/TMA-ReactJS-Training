@@ -1,12 +1,29 @@
-import logo from './logo.svg';
+import { Fragment } from 'react';
+import {
+  BrowserRouter,
+  Link,
+  Routes,
+  Route,
+} from "react-router-dom";
 import './App.css';
+import ShoppingCart from './Pages/ShoppingCart';
 import TodoApp from './Pages/TodoApp';
 
 function App() {
   return (
     <div className="App">
-      <TodoApp />
-    </div>
+      <Fragment>
+        <li>
+          <Link to="/todo" >TODO APP REDUX</Link>
+        </li>
+        <li><Link to="/cart" >SHOPPING CART</Link></li>
+        <li>a</li>
+      </Fragment>
+      <Routes>
+        <Route path="/todo" element={<TodoApp />} />
+        <Route path="/cart" element={<ShoppingCart />} />
+      </Routes>
+    </div >
   );
 }
 

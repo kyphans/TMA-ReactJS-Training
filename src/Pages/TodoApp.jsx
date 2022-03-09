@@ -1,20 +1,55 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewTodo, removeTodo, setActiveTodo } from '../actions/TodoList';
 import TodoForm from '../components/TodoApp/TodoForm';
 import TodoList from '../components/TodoApp/TodoList';
+
+const randomNumber = () => {
+    return 1000 + Math.trunc(Math.random() * 9000)
+}
 
 const TodoApp = () => {
 
     const todoList = useSelector(state => state.todo.list)
-    console.log(todoList);
+    const dispatch = useDispatch()
+
+    const handleAddTodo = (value) => {
+        const newID = randomNumber()
+        const newTodo = {
+            id: newID,
+            title: value,
+            active: 'new',
+        }
+        console.log(newTodo);
+        const action = addNewTodo(newTodo)
+        dispatch(action)
+
+    }
+
+    const handleTodoClick = (todo, index) => {
+        const action = setActiveTodo(todo, index)
+        console.log(action)
+        dispatch(action)
+    }
+
+    const handleRemoveTodoClick = (todo, index) => {
+        const action = removeTodo(todo, index)
+        console.log(action)
+        dispatch(action)
+    }
 
     return (
-        <React.Fragment>
+        <div className="TodoApp" style={{ "margin": "30px" }}>
             <h1>TODO APP - WITH REDUX</h1>
-            <TodoForm />
-            <button>Random</button>
-            <TodoList />
-        </React.Fragment>
+            <TodoForm
+                onSubmit={handleAddTodo}
+            />
+            <TodoList
+                todoList={todoList}
+                onTodoClick={handleTodoClick}
+                onRemoveButtonClick={handleRemoveTodoClick}
+            />
+        </div>
     );
 };
 
