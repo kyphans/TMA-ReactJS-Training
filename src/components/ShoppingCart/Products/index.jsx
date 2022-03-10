@@ -1,97 +1,41 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Card, Button } from 'react-bootstrap'
 
-export default function Product() {
+export default function Product(props) {
+    const { products, onProductClick } = props
+    console.log(products);
+
+    const handleAddProductToCart = (product) => {
+        if (onProductClick) {
+            onProductClick(product)
+        }
+    }
+
     return (
-        <div className="mx-2 d-flex flex-wrap justify-content-around">
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://picsum.photos/200" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://picsum.photos/200" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://picsum.photos/200" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://picsum.photos/200" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://picsum.photos/200" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://picsum.photos/200" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://picsum.photos/200" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://picsum.photos/200" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
+        <div className="m-2 text-center">
+            <h3>Products</h3>
+            <div className="d-flex flex-wrap justify-content-start">
+                {products.map(product => (
+                    <Card key={product.id} style={{ width: '18rem' }} className="p-2">
+                        <Card.Img variant="top" src="https://picsum.photos/200" />
+                        <Card.Body className="d-flex flex-column">
+                            <Card.Title>{product.name}</Card.Title>
+                            <Card.Text>
+                                {product.description}
+                            </Card.Text>
+                            <div className="mt-auto">
+                                <Card.Title >${product.price}</Card.Title>
+                                <Button
+                                    variant="primary"
+                                    onClick={() => handleAddProductToCart(product)}
+                                >
+                                    Add to cart
+                                </Button>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                ))}
+            </div>
         </div>
     )
 }

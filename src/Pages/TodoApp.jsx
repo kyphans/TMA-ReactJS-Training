@@ -23,18 +23,15 @@ const TodoApp = () => {
         console.log(newTodo);
         const action = addNewTodo(newTodo)
         dispatch(action)
-
     }
 
     const handleTodoClick = (todo, index) => {
         const action = setActiveTodo(todo, index)
-        console.log(action)
         dispatch(action)
     }
 
-    const handleRemoveTodoClick = (todo, index) => {
-        const action = removeTodo(todo, index)
-        console.log(action)
+    const handleRemoveTodoClick = (todo) => {
+        const action = removeTodo(todo)
         dispatch(action)
     }
 

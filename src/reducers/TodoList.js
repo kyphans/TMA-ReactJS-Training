@@ -4,37 +4,37 @@ const initialState = {
 }
 
 const todoReducer = (state = initialState, action) => {
+    let newTodoList
+
     switch (action.type) {
         case "ADD_TODO":
-            const newList = [...state.list]
-            newList.push(action.payload)
+            newTodoList = [...state.list]
+            newTodoList.push(action.payload)
+            console.log(newTodoList);
             return {
                 ...state,
-                list: newList,
+                list: newTodoList,
             }
 
         case "SET_ACTIVE_TODO":
-            const newTodoList = [...state.list]
+            newTodoList = [...state.list]
             const index = action.payload.index
             const newTodo = {
                 ...newTodoList[index],
                 active: newTodoList[index].active === 'new' ? 'active' : 'new',
             }
-
             newTodoList[index] = newTodo
-            console.log(...newTodoList)
             return {
                 ...state,
                 list: newTodoList,
             }
 
         case "REMOVE_TODO":
-            let newRemoveTodoList = [...state.list]
-            const removeId = action.payload.index
-            newRemoveTodoList = newRemoveTodoList.filter((todo, index) => index !== removeId)
+            newTodoList = [...state.list]
+            newTodoList = newTodoList.filter((todo, index) => todo !== action.payload)
             return {
                 ...state,
-                list: newRemoveTodoList,
+                list: newTodoList,
             }
 
         default:

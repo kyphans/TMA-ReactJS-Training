@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import {
-  BrowserRouter,
   Link,
   Routes,
   Route,

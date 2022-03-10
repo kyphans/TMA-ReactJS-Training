@@ -12,9 +12,9 @@ function TodoList(props) {
         }
     }
 
-    const handleRemoveTodoClick = (todo, index) => {
+    const handleRemoveTodoClick = (todo) => {
         if (onRemoveButtonClick) {
-            onRemoveButtonClick(todo, index)
+            onRemoveButtonClick(todo)
         }
     }
     return (
@@ -35,7 +35,7 @@ function TodoList(props) {
                         className=""
                         variant="danger"
                         style={{ "marginLeft": "auto", }}
-                        onClick={() => handleRemoveTodoClick(todo, index)}
+                        onClick={() => handleRemoveTodoClick(todo)}
                     >
                         X
                     </Button>

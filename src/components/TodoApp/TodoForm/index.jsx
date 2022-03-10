@@ -7,7 +7,7 @@ function TodoForm(props) {
     let [name, setName] = useState("");
 
     const handleSubmit = () => {
-        if (onSubmit) {
+        if (onSubmit && (name !== "")) {
             onSubmit(name)
         }
         setName("")
@@ -20,6 +20,8 @@ function TodoForm(props) {
                     placeholder="Enter your task"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    type="text"
+                    required
                 />
                 <Button
                     onClick={handleSubmit}
@@ -27,17 +29,6 @@ function TodoForm(props) {
                     Add
                 </Button>
             </InputGroup>
-
-            {/* <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                type="text" />
-            <button
-                className="btn btn-primary"
-                onClick={handleSubmit}
-            >
-                Add
-            </button> */}
         </div>
     );
 }

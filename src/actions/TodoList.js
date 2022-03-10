@@ -15,6 +15,6 @@ export const setActiveTodo = (todo, index) => {
 export const removeTodo = (todo, index) => {
     return {
         type: 'REMOVE_TODO',
-        payload: { todo, index },
+        payload: todo,
     }
 }
