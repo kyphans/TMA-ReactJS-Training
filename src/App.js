@@ -16,7 +16,6 @@ function App() {
           <Link to="/todo" >TODO APP REDUX</Link>
         </li>
         <li><Link to="/cart" >SHOPPING CART</Link></li>
-        <li>a</li>
       </Fragment>
       <Routes>
         <Route path="/todo" element={<TodoApp />} />

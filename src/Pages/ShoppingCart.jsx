@@ -58,13 +58,13 @@ export default function ShoppingCart() {
             </div>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-8 py-2 bg-light">
+                    <div className="col col-md-8 py-2 bg-light">
                         <Product
                             products={products}
                             onProductClick={handleProductClick}
                         />
                     </div>
-                    <div className="col-4 py-2 bg-light">
+                    <div className="col col-md-4 py-2 bg-light">
                         <CartItems />
                     </div>
                 </div>
