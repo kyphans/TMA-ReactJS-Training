@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { Button, ListGroup, Badge } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useRef } from 'react';
+import { Badge, Button, ListGroup } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 export default function CartItems() {
 

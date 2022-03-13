@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import React from 'react';
+import { Button, Card } from 'react-bootstrap';
 
 export default function Product(props) {
     const { products, onProductClick } = props
